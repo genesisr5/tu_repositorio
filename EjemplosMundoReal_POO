@@ -1,0 +1,61 @@
+# sistema_reservas.py
+
+class Reserva:
+    """Clase que representa una reserva en un sistema de reservas."""
+    
+    def __init__(self, nombre_cliente, fecha_reserva, num_personas):
+        """
+        Inicializa los atributos de la reserva.
+
+        :param nombre_cliente: El nombre del cliente que hace la reserva.
+        :param fecha_reserva: La fecha en la que se hace la reserva.
+        :param num_personas: El número de personas para la reserva.
+        """
+        self.nombre_cliente = nombre_cliente
+        self.fecha_reserva = fecha_reserva
+        self.num_personas = num_personas
+
+    def mostrar_reserva(self):
+        """Muestra la información de la reserva."""
+        return f"Reserva de {self.nombre_cliente} para {self.num_personas} personas el {self.fecha_reserva}"
+
+    def cambiar_fecha(self, nueva_fecha):
+        """Permite cambiar la fecha de la reserva."""
+        self.fecha_reserva = nueva_fecha
+        print(f"La fecha de la reserva ha sido cambiada a {self.fecha_reserva}")
+
+
+class SistemaReservas:
+    """Clase que representa el sistema de reservas."""
+    
+    def __init__(self):
+        """Inicializa el sistema de reservas con una lista vacía."""
+        self.reservas = []
+    
+    def agregar_reserva(self, reserva):
+        """Agrega una nueva reserva al sistema."""
+        self.reservas.append(reserva)
+        print(f"Reserva para {reserva.nombre_cliente} agregada al sistema.")
+    
+    def mostrar_reservas(self):
+        """Muestra todas las reservas en el sistema."""
+        if not self.reservas:
+            print("No hay reservas en el sistema.")
+        for reserva in self.reservas:
+            print(reserva.mostrar_reserva())
+
+
+# Crear algunas reservas de ejemplo
+reserva1 = Reserva("Juan Pérez", "2025-01-15", 4)
+reserva2 = Reserva("Ana Gómez", "2025-01-16", 2)
+
+# Crear el sistema de reservas y agregar las reservas
+sistema = SistemaReservas()
+sistema.agregar_reserva(reserva1)
+sistema.agregar_reserva(reserva2)
+
+# Mostrar todas las reservas
+sistema.mostrar_reservas()
+
+# Cambiar la fecha de una reserva
+reserva1.cambiar_fecha("2025-01-17")
